@@ -7,14 +7,19 @@ const baseName: string = path.basename(module.filename);
 // const env: string = process.env.NODE_ENV || "development";
 
 let db = null;
+let options = { dialect: "mysql" };
 
 if (!db) {
   db = {};
+
+  const operatorsAliases = false;
+  options = Object.assign({ operatorsAliases }, options);
+
   const sequelize: Sequelize.Sequelize = new Sequelize(
     "graphql_blog_development",
     "root",
     "",
-    { dialect: "mysql" }
+    options
   );
 
   fs.readdirSync(__dirname)
