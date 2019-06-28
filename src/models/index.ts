@@ -4,17 +4,17 @@ import * as Sequelize from "sequelize";
 import { DbConnection } from "../interfaces/DbConnectionInterface";
 
 const baseName: string = path.basename(module.filename);
-const env: string = process.env.NODE_ENV || "development";
-let config = path.resolve(`${__dirname}./../config/config.json`)[env];
+// const env: string = process.env.NODE_ENV || "development";
+
 let db = null;
 
 if (!db) {
   db = {};
   const sequelize: Sequelize.Sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
+    "graphql_blog_development",
+    "root",
+    "",
+    { dialect: "mysql" }
   );
 
   fs.readdirSync(__dirname)

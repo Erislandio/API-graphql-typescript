@@ -56,8 +56,7 @@ export default (
         type: DataTypes.BLOB({
           length: "long"
         }),
-        allowNull: false,
-        defaultValue: null
+        allowNull: false
       }
     },
     {
