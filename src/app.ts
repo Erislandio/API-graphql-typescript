@@ -1,4 +1,6 @@
 import * as express from "express";
+import * as graphqlHTTP from "express-graphql";
+import schema from "./graphql/schema";
 
 class App {
   public express: express.Application;
@@ -10,16 +12,10 @@ class App {
 
   private middleware(): void {
     this.express.use(
-      "/hello",
-      (
-        req: express.Request,
-        res: express.Response,
-        next: express.NextFunction
-      ) => {
-        res.send({
-          hello: "Olá mundo!"
-        });
-      }
+      "/graphql",
+      graphqlHTTP({
+        schema
+      })
     );
   }
 }
