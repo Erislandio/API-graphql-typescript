@@ -28,9 +28,7 @@ const typeDefs = `
 `;
 const resolvers = {
     Query: {
-        allUsers: () => {
-            [{}];
-        }
+        allUsers: () => users
     }
 };
 exports.default = graphql_tools_1.makeExecutableSchema({

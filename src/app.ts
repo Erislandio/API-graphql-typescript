@@ -14,7 +14,8 @@ class App {
     this.express.use(
       "/graphql",
       graphqlHTTP({
-        schema
+        schema,
+        graphiql: true
       })
     );
   }
