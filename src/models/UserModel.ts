@@ -9,6 +9,8 @@ export interface UserAttributes {
   email?: string;
   password?: string;
   photo?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface UserInstance
@@ -73,7 +75,7 @@ export default (
     }
   );
 
-  User.associate = (models: ModelsInterface) => {};
+  User.associate = (models: ModelsInterface): void => {};
 
   User.prototype.isPassword = (
     econdedPassword: string,
