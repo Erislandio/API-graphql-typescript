@@ -1,5 +1,6 @@
 import * as Sequelize from "sequelize";
 import { BaseModelInterface } from "../interfaces/BaseModelInterface";
+import { ModelsInterface } from "../interfaces/ModelsInterface";
 
 export interface PostAtrributes {
   id?: number;
@@ -50,5 +51,15 @@ export default (
     }
   );
 
-  return Post
+  Post.associate = (models: ModelsInterface): void => {
+    Post.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+        field: "author",
+        name: "author"
+      }
+    });
+  };
+
+  return Post;
 };
