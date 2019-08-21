@@ -10,13 +10,15 @@ let db = null;
 
 if (!db) {
   db = {};
+
+
   const sequelize: Sequelize.Sequelize = new Sequelize({
     username: "root",
     password: "Er1sl@ndio",
     database: "typescript_graphql",
     host: "127.0.0.1",
     dialect: "mysql",
-    operatorsAliases: false
+    operatorsAliases: false,
   });
 
   fs.readdirSync(__dirname)
