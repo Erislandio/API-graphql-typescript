@@ -5,7 +5,7 @@ const commentTypes = `
         comment: String!
         createdAt: String!
         updateAt: String!
-        user: User!,
+        user: User!
         post: Post!
     }
 
