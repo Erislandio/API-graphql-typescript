@@ -15,5 +15,5 @@ const SchemaDefinition = `
 `;
 
 export default makeExecutableSchema({
-  typeDefs: [SchemaDefinition, Query, Mutation, userTypes, PostTypes, commentTypes]
+  typeDefs: [SchemaDefinition, Query, Mutation, userTypes, PostTypes, commentTypes],
 });
