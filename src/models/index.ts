@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as Sequelize from "sequelize";
+import { DbConnection } from "../interfaces/DbConnectionInterface";
 
 const baseName: string = path.basename(module.filename);
 // const env: string = process.env.NODE_ENV || "development";
@@ -41,4 +42,4 @@ if (!db) {
   db["sequelize"] = sequelize;
 }
 
-export default db;
+export default <DbConnection>db;
