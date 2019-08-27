@@ -70,6 +70,15 @@ export default (
           // ! criptografia de senha
           const salt = genSaltSync();
           user.password = hashSync(user.password, salt);
+        },
+        beforeUpdate: (
+          user: UserInstance,
+          options: Sequelize.CreateOptions
+        ): void => {
+          if (user.changed("password")) {
+            const salt = genSaltSync();
+            user.password = hashSync(user.password, salt);
+          }
         }
       }
     }

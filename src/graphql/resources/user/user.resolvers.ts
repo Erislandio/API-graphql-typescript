@@ -16,9 +16,7 @@ export const userResolvers = {
                 if(!user) {
                     throw new Error(`User with id ${id} not found`)
                 }
-
                 return user
-
             })
         }
     },
@@ -36,10 +34,36 @@ export const userResolvers = {
                         throw new Error(`User with id ${id} not found`);
                     }
 
-                    return user.update(input)
+                    return user.update(input, { transaction: t })
 
                 })
             })
-        }
+        },
+        updateUserPass: (parent, {id, input}, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
+            id = parseInt(id, 10);
+            return db.sequelize.transaction((t: Transaction) => {
+                return db.User.findById(id).then((user: UserInstance) => {
+                    if(!user) {
+                        throw new Error(`User with id ${id} not found`);
+                    }
+                    return user.update(input, { transaction: t }).then((user: UserInstance) => {
+                        !!user
+                    })
+                })
+            })
+        },
+        deleteUser:  (parent, {id}, {db}: {db: DbConnection}, info: GraphQLResolveInfo) => {
+            id = parseInt(id, 10);
+            return db.sequelize.transaction((t: Transaction) => {
+                return db.User.findById(id).then((user: UserInstance) => {
+                    if(!user) {
+                        throw new Error(`User with id ${id} not found`);
+                    }
+                    return user.destroy({
+                        transaction: t
+                    }).then(user => {!!user})
+                })  
+            })
+        },
     }
 }
