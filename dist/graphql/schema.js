@@ -15,5 +15,5 @@ const SchemaDefinition = `
 
 `;
 exports.default = graphql_tools_1.makeExecutableSchema({
-    typeDefs: [SchemaDefinition, query_1.Query, mutation_1.Mutation, user_schema_1.userTypes, post_schema_1.PostTypes, comment_schema_1.commentTypes]
+    typeDefs: [SchemaDefinition, query_1.Query, mutation_1.Mutation, user_schema_1.userTypes, post_schema_1.PostTypes, comment_schema_1.commentTypes],
 });
