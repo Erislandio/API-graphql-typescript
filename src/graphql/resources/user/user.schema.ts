@@ -27,7 +27,6 @@ const userTypes = `
 
 `
 
-
 const userQueries = `
     users(first: Int, offset: Int): [User!]!
     user(id: ID!): User
@@ -41,3 +40,9 @@ const userMutations = `
     deleteUser(id: ID!): Boolean
 
 `
+
+export {
+    userTypes,
+    userMutations,
+    userQueries
+}

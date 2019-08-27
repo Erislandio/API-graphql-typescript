@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_tools_1 = require("graphql-tools");
 const query_1 = require("./query");
 const mutation_1 = require("./mutation");
+const user_schema_1 = require("./resources/user/user.schema");
 const SchemaDefinition = `
 
   type Schema {
@@ -12,5 +13,5 @@ const SchemaDefinition = `
 
 `;
 exports.default = graphql_tools_1.makeExecutableSchema({
-    typeDefs: [SchemaDefinition, query_1.Query, mutation_1.Mutation]
+    typeDefs: [SchemaDefinition, query_1.Query, mutation_1.Mutation, user_schema_1.userTypes]
 });
