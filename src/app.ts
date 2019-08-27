@@ -19,11 +19,13 @@ class App {
         req["context"].db = db;
         next();
       },
-      graphqlHTTP({
-        schema,
-        graphiql: true
-      })
-    );
+      graphqlHTTP(req => ({
+          schema,
+          graphiql: true,
+          context: req['context']
+        })
+      )
+    )
   }
 }
 
